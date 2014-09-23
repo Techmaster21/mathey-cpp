@@ -1,7 +1,5 @@
-// NOTE: ITS LIKE SUPER BAD PRACTICE TO INCLUDE FUNCTION DEFINITIONS IN HEADER 
-// FILES. DON'T DO IT. I'm just doing it until I convert the whole thing to C++ 
-// then I'll move it to a static library or something
-
+// NOTE: I think including a function definiton like this in a header file is a no-no, but
+// I'd have to refer to my material (I could instead make a library out of it(maybe?))
 void help();
 #ifdef __cplusplus
 extern "C" {
