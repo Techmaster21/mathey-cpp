@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "mathey.h"
+#include "mathey.hpp"
 int calc() {
 /* This don't work.
 	char equ[80];

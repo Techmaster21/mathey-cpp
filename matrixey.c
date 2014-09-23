@@ -35,7 +35,7 @@ behind like scanf?
 */
 
 #include <stdio.h>
-#include "mathey.h"
+#include "mathey.hpp"
 //some global variables for rows, columns & whether to run the program again
 int r, c;
 char restart;
@@ -46,42 +46,42 @@ void eschform(double x[r][c]);
 void printout(double x[r][c]);
 void startagain();
 
-int matrix() {
-	do 
-	{
-	printf("Rows: ");
-	if (scanf("%i", &r) != 1)
-	{
-		fputs("Invalid input\n", stderr);
-		startagain();
-		continue;
-	}
-	printf("Columns: ");
-	if (scanf("%i", &c) != 1)
-	{
-		fputs("Invalid input\n", stderr);
-		startagain();
-		continue;
-	}
-	double x[r][c];
+int matrix()
+{
+	puts("Program to row reduce a matrix.\n");
+	do {
+		printf("Rows: ");
+		if (scanf("%i", &r) != 1) {
+			fputs("Invalid input\n", stderr);
+			startagain();
+			continue;
+		}
+		printf("Columns: ");
+		if (scanf("%i", &c) != 1) {
+			fputs("Invalid input\n", stderr);
+			startagain();
+			continue;
+		}
 		
-	if (getnums(x))
-	{
-		fputs("Invalid input\n", stderr);
+		double x[r][c];
+		
+		if (getnums(x)) {
+			fputs("Invalid input\n", stderr);
+			startagain();
+			continue;
+		}
+		rowreduce(x); 
+		eschform(x);
+		printout(x);
 		startagain();
-		continue;
-	}
-	rowreduce(x); 
-	eschform(x);
-	printout(x);
-	startagain();
 
 	} while (restart == 'y');
 	return 0;
 }
 
 //Takes input for numbers in matrix
-int getnums(double x[r][c]) {
+int getnums(double x[r][c])
+{
 	double m, d = 1;
 	int y, z;
 	puts( "Print matrix in standard form using tabs to seperate values\n"
@@ -90,12 +90,9 @@ int getnums(double x[r][c]) {
 	      "1	2	7\n"
 	      "-------------------\n"
 	      "Input matrix:");
-	for(y = 0; y < r; y++) 
-	{
-		for(z = 0; z < c; z++) 
-		{
-			switch (scanf("%lf/%lf\t", &m, &d)) 
-			{
+	for(y = 0; y < r; y++) {
+		for(z = 0; z < c; z++) {
+			switch (scanf("%lf/%lf\t", &m, &d)) {
 			case 2:
 			case 1:
 				x[y][z] = m/d;				
@@ -109,16 +106,15 @@ int getnums(double x[r][c]) {
 }
 
 //Row reduce the matrix
-void rowreduce(double x[r][c]) {
+void rowreduce(double x[r][c])
+{
 	int n, y, i, z;
 	double d;
-	for(i = 0; i < r; i++) 
-	{
+	for(i = 0; i < r; i++) {
 		d = x[i][i];
 		for(y = i; y < c; y++)
 			x[i][y] /= d;
-		for(n = i + 1; n < r; n++) 
-		{
+		for(n = i + 1; n < r; n++) {
 			d = x[n][i];
 			for(z = 0; z < c; z++)
 				x[n][z] += ((-d) * x[i][z]);
@@ -126,12 +122,11 @@ void rowreduce(double x[r][c]) {
 	}
 }
 //Transform row reduced form into reduced row eschelon form
-void eschform(double x[r][c]) {
+void eschform(double x[r][c])
+{
 	int i, n, j = r-1;
-	for(i = c - 2; i >= 1; i--, j--) 
-	{
-		for(n = i - 1; n >= 0; n--) 
-		{
+	for(i = c - 2; i >= 1; i--, j--) {
+		for(n = i - 1; n >= 0; n--) {
 			x[n][i] *= x[j][c-1];
 			x[n][c-1] -= x[n][i];
 			x[n][i] = 0;
@@ -147,8 +142,7 @@ void printout(double x[r][c]) {
 		printf("\t");
 	puts(" ⌉");
 */
-	for(y = 0; y < r; y++) 
-	{
+	for(y = 0; y < r; y++) {
 //		printf("|");
 		for(z = 0; z < c; z++)
 			if (z != c-1)
@@ -164,7 +158,8 @@ void printout(double x[r][c]) {
 */
 }
 
-void startagain() {
+void startagain()
+{
 	clean(); /* This flushes the buffer to remove the invalid input */ 
 	puts("Do you want to start again?(y/n)");
 	scanf("%c", &restart);

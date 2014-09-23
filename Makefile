@@ -1,9 +1,9 @@
-all : calcey.o mathey.o matrixey.o mathey
+all: calcey.o mathey.o matrixey.o mathey
 
-calcey.o: calcey.c mathey.h
+calcey.o: calcey.c mathey.hpp
 	gcc -c calcey.c
 
-mathey.o: mathey.cpp mathey.h
+mathey.o: mathey.cpp mathey.hpp
 	g++ -c mathey.cpp
 
 matrixey.o: matrixey.c
