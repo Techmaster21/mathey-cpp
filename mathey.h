@@ -21,21 +21,19 @@ int calc();
 
 using namespace std;
 
-static void clean()
-{
-   cin.clear(); // Clears any set error bits
-   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Flushes the
-                                                                 // input buffer
-}
-
-#else                                           
+#else
 
 #include <stdio.h>
 
-static void cleanC()
+#endif
+static void clean()
 {
+#ifdef __cplusplus
+   cin.clear(); // Clears any set error bits
+   cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Flushes the
+                                                                 // input buffer
+#else
     char f; //For cleaning stdin before passing to an outside function that requires input(Fixes various bugs)
     while ((f=getchar()) != '\n' && f != EOF); //Making stdin squeeky clean
-}
-
 #endif
+}

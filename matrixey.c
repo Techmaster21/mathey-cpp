@@ -165,8 +165,8 @@ void printout(double x[r][c]) {
 }
 
 void startagain() {
-	cleanC(); /* This flushes the buffer to remove the invalid input */ 
+	clean(); /* This flushes the buffer to remove the invalid input */ 
 	puts("Do you want to start again?(y/n)");
 	scanf("%c", &restart);
-	cleanC(); /* Just in case the user enters "yes" or "no" instead of n or y */
+	clean(); /* Just in case the user enters "yes" or "no" instead of n or y */
 }
