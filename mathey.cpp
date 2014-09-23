@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <string>
-#include <limits>
 #include "mathey.h"
 
 using namespace std;
 
-int main() {
+int main()
+{
 	string mode; //For storing the string the user enters as desired mode of operation.
 	cout << "Enter desired mode of operation:" << endl;
 	while (true) {
@@ -33,7 +33,8 @@ int main() {
 	return 0;
 }
 
-void help() {
+void help()
+{
 	cout << "Enter a command to perform a desired function. Acceptable"
 		 << " commands include:" << endl
 		 << "calc	help	matrix	quit" << endl;
