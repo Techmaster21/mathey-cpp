@@ -2,7 +2,6 @@
 // I'd have to refer to my material (I could instead make a library out of it(maybe?))
 #ifndef MatheyH     // This should keep the compiler from including the header
 #define MatheyH     // twice
-void help();
 #ifdef __cplusplus  // If we're using a C++ compiler, declare the functions as
 extern "C" {        // external C functions
 #endif
@@ -25,6 +24,7 @@ using namespace std;
 #include <stdio.h>
 
 #endif
+
 static void clean() // Declared as static to prevent compiler from including 
 {                   // twice and complaining about an error it caused >.>
                     // I think 'inline' would also work.
